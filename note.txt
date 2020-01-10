@@ -1,0 +1,37 @@
+routes -> tampilan yg ingin dimunculkan terkoneksi  kemna . contoh "/" untuk mengarah ke home. "/about" untuk mengarah ke tampilan about
+
+views -> menampilkan file yg ingin ditampilkan. contoh views('welcome') menampilkan halaman yg tersedia di file welcome.blade.php
+
+section -> apapun yg kita tulis di yield.
+
+yield -> keyword di blade template. contoh @yield('container') that mean "disini akan tersimpan container" diletakkan di halaman utama biasanya, karna di halaman lain memiliki container yg berbeda2 biar nanti disisipkan. container pd halaman sampingan akan disisipkan di halaman utama.
+
+extends -> based template, digunakan saat mau mengambil di halaman mana. contoh @extends('layout/main') jadi mengambil di views di folder layout di halaman main.blade.php. extends itu relatif terhadap folder views. bisa pakai "/" atau "." sama aja.
+
+parameter -> bisa digunakan untuk mengirimkan data ke dalam view.contoh saya memiliki variabel $nama di routes nya yg akan saya kirimkan ke about buat menggantikan tulisan nama yg udh ada di about. dengan memberikan array"[]" yg diisikan nama
+
+{{ url('/') }} -> berfungsi agar ..href dapat terkoneksi ke laravel maupun localhost jika suatu saat akan di hosting
+
+laravel secara default ngasih nama @show untuk menampilkan satu nama mahasiswa (contohnya) tapi detail dan @index unk menampilkan sluruh data mahasiswa 
+
+php artisan make:controller MahasiswaController --resou
+rces -> untuk membuat method2 default di dalamnya. ex , data karyawan, data absensi
+
+"->" tanda panah tersebut adalah notasi objek.
+
+$loop->iteration -> mengetahui sudah ke iterasi ke berapa saat looping. magic nya laravel tidak ush menggunakan for i dg increment dll lah.
+
+unique - agar data tiap orang tdk sama
+
+
+ALUR : WEB.PHP - CONTROLLER - buat file baru di folder yg diinginkan - edit di folder "layout" tempat unk menampilkan web
+
+(+) Laravel : 
+- memudahkan kita unk berinteraksi dg database dg adanya object relational mapping
+
+
+nah laravel sdh dg cerdas bs memetakan / mapping antara data yg di dlm tabel dg model. karna laravel menganggap model itubagian singular dr tabel. jadi jika nama tabel kalian students , model nama kalian student.
+
+helper di laravel seperti {{csrf_field()}} jika dilihat di inspect akan tetera name="token" karna dlm laravel membutuhkan token untuk insert
+
+jika di dlm eror terdapat kata "mass asiignment" -> unk menggunakan metod create di model maka kita hrs mendeklarasikan fillable property di model nya.
