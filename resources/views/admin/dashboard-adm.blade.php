@@ -22,7 +22,7 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $jumlahOrganik }}</h3>
             
                         <p><b>Form Hak Akses Organik</b></p>
                     </div>
@@ -37,7 +37,7 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- small box -->
                     <div class="small-box bg-green">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>{{ $jumlahNonOrganik }}</h3>
             
                         <p><b>Form Hak Akses Non Organik</b></p>
                     </div>
@@ -52,7 +52,7 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>{{ $jumlahPreventive }}</h3>
             
                         <p><b>Form Preventive</b></p>
                     </div>
@@ -67,7 +67,7 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- small box -->
                     <div class="small-box bg-red">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>{{ $jumlahPerubahan }}</h3>
             
                         <p><b>Form Perubahan</b></p>
                     </div>
@@ -111,52 +111,52 @@ date_default_timezone_set("Asia/Bangkok");
                                 <tr>
                                     <td style="text-align:center">1</td>
                                     <td>Office Automation</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $Office }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">2</td>
                                     <td>Fileshare</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $Fileshare }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">3</td>
                                     <td>VPN</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $VPN }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">4</td>
                                     <td>Aplikasi Oracle</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $Oracle }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">5</td>
                                     <td>Aplikasi Non Oracle</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $NonOracle }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">6</td>
                                     <td>New Account (O)</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $NewAcoountO }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">7</td>
                                     <td>New Account (NO)</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $NewAcoountNO }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">8</td>
                                     <td>Communication</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $Communication }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">9</td>
                                     <td>Mail Group</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $Mailgroup }}</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center">10</td>
                                     <td>Extend Account (NO)</td>
-                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center">{{ $ExtendAcc }}</td>
                                 </tr>
                             </tbody>
                         </table>

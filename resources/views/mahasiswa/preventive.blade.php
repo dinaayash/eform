@@ -130,25 +130,25 @@
                                             <div class="form-group">
                                                 <label>Keyboard / Mouse :</label>
                                                 <div class="checkbox" style="margin-top:-5px; margin-left:5px;">
-                                                <label><input type="checkbox" name="keyboard" id="keyboard" value="OK">OK</label>
+                                                <label><input type="checkbox" name="keyboard" id="keyboard" value="ok">OK</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Power Supply / Charger :</label>
                                                 <div class="checkbox" style="margin-top:-5px; margin-left:5px;">
-                                                  <label><input type="checkbox" name="powersupply" id="powersupply" value="OK">OK</label>
+                                                  <label><input type="checkbox" name="powersupply" id="powersupply" value="ok">OK</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Monitor :</label>
                                                 <div class="checkbox" style="margin-top:-5px; margin-left:5px;">
-                                                  <label><input type="checkbox" name="monitor" id="monitor" value="OK">OK</label>
+                                                  <label><input type="checkbox" name="monitor" id="monitor" value="ok">OK</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Battery :</label>
                                                 <div class="checkbox" style="margin-top:-5px; margin-left:5px;">
-                                                  <label><input type="checkbox" name="battery" id="battery" value="OK">OK</label>
+                                                  <label><input type="checkbox" name="battery" id="battery" value="ok">OK</label>
                                                 </div>
                                             </div>
                                         </div>

@@ -54,14 +54,15 @@
                                 </div> -->
                                 <div class="form-group">
                                   <label>Jabatan</label>
-                                  <input type="text" class="form-control" id="jabatan_p" name="jabatan_p" placeholder="Staff Profesional Developer">
+                                  <input type="text" class="form-control" id="jabatan_p" name="jabatan_p" placeholder="Staff Profesional Developer"
+                                  value="{{$user->jabatan}}"readonly>
                                   @if($errors->has('jabatan_p'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
                                 </div>
                                 <div class="form-group">
                                 <label>Satuan Kerja</label>
-                                <input type="text" name="sat_kerja" id="sat_kerja" value=""  class="form-control" placeholder="">
+                                <input type="text" name="sat_kerja" id="sat_kerja" value="{{$user->satuan_kerja}}"  class="form-control" placeholder=""readonly>
                                 </div>
                                 
                                 </div>
@@ -184,15 +185,15 @@
         </tr>
         </tbody>
         </table>
-         <div class="form-group">
+        <div class="form-group">
                 <label>Masa Berlaku <b style="color:red;">*</b></label>
                 <div class="input-group date">
                 <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
                 </div>
-                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker">
+                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker" readonly> 
                 </div>
-                </div>
+        </div>
         <div class="form-group">
         <label>Keterangan, Keperluan atau Alasan <b style="color:red;">*</b></label>
             <textarea class="form-control" rows="3" maxlength="1000" name="alasan" id="alasan"></textarea>
@@ -267,7 +268,7 @@
 
 
         $(function(){
-        $(".datepicker").datepicker({
+        $("#datepicker").datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true,
         todayHighlight: true,

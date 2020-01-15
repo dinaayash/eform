@@ -31,7 +31,7 @@
                     <h1 class="box-title"><b>Lengkapi Form Dibawah Ini</b></h1>
                 </div>
                 @foreach($editnon as $updt)
-                <form action="/non-organik" method="post" id="myform" onSubmit="return validasi()">
+                <form action="/non-organik/update" method="post" id="myform" onSubmit="return validasi()">
                    {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $updt->id_hak_akses_NO }}"> <br/>
                 <div class="row">
@@ -39,12 +39,12 @@
                         <div class="box-body">
                         <div class="box box-default bayangan">
                             <div class="box-header with-border">
-                              <h3 class="box-title">Data Pemohon</h3><img src="template/dist/img/one.png" width="20px" style="float:right;">
+                              <h3 class="box-title">Data Pemohon</h3><img src="/template/dist/img/one.png" width="20px" style="float:right;">
                             </div>
                                 <div class="box-body">
                                 <div class="form-group">
                                 <label>Nama Pemohon</label>
-                                <input type="text" class="form-control" id="nama_pemohon" name="pemohon" placeholder="" value="{{$user->username}}" readonly>
+                                <input type="text" class="form-control" id="nama_pemohon" name="pemohon" placeholder="" value="{{$updt->nama_pemohon}}" readonly>
                                 @if($errors->has('pemohon'))
                                 <small class ="text-danger">harus diisi</small>
                                 @endif
@@ -54,21 +54,21 @@
                                 </div> -->
                                 <div class="form-group">
                                   <label>Jabatan</label>
-                                  <input type="text" class="form-control" id="jabatan_p" name="jabatan_p" placeholder="Staff Profesional Developer" value="{{$updt->jabatan_pemohon}}">
+                                  <input type="text" class="form-control" id="jabatan_p" name="jabatan_p" placeholder="Staff Profesional Developer" value="{{$updt->jabatan_pemohon}}" readonly>
                                   @if($errors->has('jabatan_p'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
                                 </div>
                                 <div class="form-group">
                                 <label>Satuan Kerja</label>
-                                <input type="text" name="sat_kerja" id="sat_kerja" value=""  class="form-control" placeholder="" value="{{$updt->satuan_kerja}}">
+                                <input type="text" name="sat_kerja" id="sat_kerja" class="form-control" placeholder="" value="{{$updt->satuan_kerja}}" readonly>
                                 </div>
                                 
                                 </div>
                             </div>
 	<div class="box box-default bayangan">
     	<div class="box-header with-border">
-    	<h3 class="box-title">Atasan Langsung</h3> <img src="template/dist/img/two.png" width="20px" style="float:right;">
+    	<h3 class="box-title">Atasan Langsung</h3> <img src="/template/dist/img/two.png" width="20px" style="float:right;">
     	</div>
     	<div class="panel-body">
    		<div class="form-group">
@@ -106,18 +106,18 @@
         <div class="box-body">
         <div class="box box-default bayangan">
         <div class="box-header with-border">
-        	<h3 class="box-title">Layanan ICT Yang Dibutuhkan</h3> <img src="template/dist/img/three.png" width="20px" style="float:right;">
+        	<h3 class="box-title">Layanan ICT Yang Dibutuhkan</h3> <img src="/template/dist/img/three.png" width="20px" style="float:right;">
         </div>
         <div class="panel-body">
         <div class="form-group">
         <label class="radio-inline">
-    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="vpn" value="vpn" onchange="cekLayanan($(this).val())" {{ $updt->layanan == 'vpn' ? 'checked' : '' }}>VPN
+    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="vpn" value="vpn" onchange="cekLayanan($(this).val())" {{ $updt->tbl_layanan_ict->id_layanan->nama_layanan == 'VPN' ? 'checked' : '' }}>VPN
         </label>
         </div>
         <hr>
         <div class="form-group">
         <label class="radio-inline">
-    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="com2" value="com" onchange="cekLayanan($(this).val())" {{ $updt->layanan == 'com' ? 'checked' : '' }}>Communication
+    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="com2" value="com" onchange="cekLayanan($(this).val())" {{ $updt->tbl_layanan_ict->id_layanan->nama_layanan == 'Communication' ? 'checked' : '' }}>Communication
         </label>
         &nbsp;&nbsp;<select  name="jeniscommunication" id="jeniscommunication2" class="form-control jeniscommunication2" placeholder="Nama Fileshare" style="margin-top:10px; text-transform: capitalize; display:none" autofocus>
         <option>Office Communication</option>
@@ -127,7 +127,7 @@
         <hr>
         <div class="form-group">
         <label class="radio-inline">
-    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="fileshare2" value="fileshare" onchange="cekLayanan($(this).val())" {{ $updt->layanan == 'fileshare' ? 'checked' : '' }}>Fileshare
+    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="fileshare2" value="fileshare" onchange="cekLayanan($(this).val())" {{ $updt->tbl_layanan_ict->id_layanan->nama_layanan == 'Fileshare' ? 'checked' : '' }}>Fileshare
         </label>
      &nbsp;&nbsp;<input name="namafileshare" type="text" id="namafileshare2" class="form-control namafileshare2" placeholder="Nama Fileshare" style="margin-top:10px; text-transform: capitalize; display:none" autofocus>
       	</div>
@@ -143,7 +143,7 @@
         <td>
          <div class="panel-body">
          	<label class="radio-inline">
-                <input name="layanan" id="layanan" type="radio" class="oracle" value="oracle" onchange="cekLayanan($(this).val())" {{ $updt->layanan == 'oracle' ? 'checked' : '' }}>Oracle
+                <input name="layanan" id="layanan" type="radio" class="oracle" value="oracle" onchange="cekLayanan($(this).val())" {{ $updt->tbl_layanan_ict->id_layanan->nama_layanan == 'Oracle' ? 'checked' : '' }}>Oracle
             </label>
             	<select name="idaplikasi" type="text" id="namaaplikasi" class="form-control namaaplikasi pilih4" value="" placeholder="Nama Aplikasi" style="margin-top:10px; display:none">
         <option value="CRM Siebel">CRM Siebel</option>
@@ -166,7 +166,7 @@
         
         <br>
         <label class="radio-inline" style="margin-top:10px;">
-        	<input name="layanan" type="radio" class="nonoracle" value="nonoracle" onchange="cekLayanan($(this).val())" {{$updt->layanan == 'nonoracle' ? 'checked' : ''}}>Non Oracle
+        	<input name="layanan" type="radio" class="nonoracle" value="nonoracle" onchange="cekLayanan($(this).val())" {{$updt->tbl_layanan_ict->id_layanan->nama_layanan == 'Non Oracle' ? 'checked' : ''}}>Non Oracle
         </label>
         <select name="idaplikasi2" type="text" id="namaaplikasi2" class="form-control namaaplikasi2" value="" placeholder="Nama Aplikasi" style="margin-top:10px; display:none">
         	<option value="GASPEX">GASPEX</option>
@@ -190,16 +190,26 @@
                 <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
                 </div>
-                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker">
+                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker" value="{{$updt->masa_berlaku}}" readonly>
                 </div>
+        </div>
+        
+         <!-- <div class="form-group">
+                <label>Masa Berlaku <b style="color:red;">*</b></label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input name="masaberlaku" type="text" class="form-control datepicker" value="{{$updt->masa_berlaku}}" id="datepicker">
                 </div>
+        </div> -->
         <div class="form-group">
         <label>Keterangan, Keperluan atau Alasan <b style="color:red;">*</b></label>
             <textarea class="form-control" rows="3" maxlength="1000" name="alasan" id="alasan">{{$updt->alasan}}</textarea>
         </div>
         </div>
         </div>
-        <button name="simpan" type="submit" class="btn btn-primary" style="margin-bottom:10px; width:100px">Submit Form</button>
+        <button name="simpan" type="submit" class="btn btn-primary" style="margin-bottom:10px; width:100px">Update Form</button>
         </div>
         </div>
       	</div>
@@ -266,13 +276,13 @@
             $('#myModal').modal('hide');
         });
 
-
-        $(function(){
-        $(".datepicker").datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-        });
+            $(function(){
+            $("#datepicker").datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+                });
+        
     });
 
 

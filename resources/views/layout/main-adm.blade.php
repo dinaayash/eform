@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="{{ asset('template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <link rel="stylesheet" type="text/css" href="template/plugins/datepickerr/css/datepicker.css">
+  <!-- bootstrap css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -90,7 +92,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/profil" class="btn btn-info">Profile</a>
+                  <a href="/admin-profil" class="btn btn-info">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ route('postlogout-ku') }}" class="btn btn-danger btn-block">Sign out</a>
@@ -112,7 +114,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="/dashboard-adm">
+          <a href="/admin">
             <i class="fa fa-home"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -180,7 +182,10 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<!-- bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- library jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <!-- jQuery 3 -->
 <script src="template/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

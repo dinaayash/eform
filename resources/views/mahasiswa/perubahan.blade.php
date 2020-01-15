@@ -87,7 +87,7 @@
 		<td>{{$peb -> no_perubahan}}</td>
 		<td><b>{{$peb -> nama_pemohon}}</b>
 			<br><small>{{$peb->tanggal_input}}</small></td>
-		<td>{{$peb -> desc_perubahan}}</td>
+		<td>{{$peb -> nama_proyek}}</td>
 		
 	<td>
 		<ol>
@@ -106,7 +106,7 @@
 			<div class="btn-group-justified" style="text-align:center;">
                 <a href=""><button type= "button" class="btn btn-danger"><i class="fa fa-trash" width="23px;"></i></button></a>
                                                     &nbsp;
-                <a href=""><button type= "button" class="btn btn-warning"><i class="fa fa-edit" width="23px;"></i></button></a>
+                <a href="/perubahan/edit/{{ $peb->id_perubahan }}"><button type= "button" class="btn btn-warning"><i class="fa fa-edit" width="23px;"></i></button></a>
             </div>
 </div>		
 

@@ -15,12 +15,11 @@ class CekRole
      */
     public function handle($request, Closure $next, ...$role)
     {
-
+        If(Auth::user()){
         if(in_array(Auth::user()->role, $role)){
             return $next($request);
         };
         return redirect()->route('login-ku');
-        
-        
+        }
     }
 }

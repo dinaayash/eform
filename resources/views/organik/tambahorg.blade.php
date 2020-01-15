@@ -26,7 +26,7 @@
                                 <div class="box-body">
                                 <div class="form-group">
                                   <label>NIPG</label>
-                                  <input type="text" class="form-control" name="nipg" placeholder="" value="{{$nipg}}">
+                                  <input type="text" class="form-control" name="nipg" placeholder="" value="{{$user->nipg}}" readonly>
                                   @if($errors->has('nipg'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label>Jabatan</label>
-                                  <input type="text" class="form-control" name="jabatan_p" placeholder="Staff Profesional Developer">
+                                  <input type="text" class="form-control" name="jabatan_p" placeholder="Staff Profesional Developer" value="{{$user->satuan_kerja}}" readonly>
                                   @if($errors->has('jabatan_p'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
@@ -143,12 +143,12 @@
                         </label>
                         <input name="keteranganuserbaru2" type="text" id="namaaccount2" class="form-control namaaccount2" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
                         <input name="namajabatan2" type="text" id="namajabatan2" class="form-control namajabatan2" placeholder="Jabatan" style="margin-top:10px; display:none; text-transform: capitalize;">
-       <!--  <div class="input-group date tanggal" style="margin-top:10px; display:none">
-            <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-            </div>
-                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker" placeholder="Masa Berlaku">
-        </div> -->
+                        <div class="input-group date tanggal" style="margin-top:10px; display:none">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                               <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker2" placeholder="Masa Berlaku">
+                        </div>
     <br>
         <label class="radio-inline"  style="margin-top:10px;">
         		<input name="layanan" id="layanan" type="radio" class="perpanjang" value="perpanjang" onchange="cekLayanan($(this).val())">Extend Account Non Organik

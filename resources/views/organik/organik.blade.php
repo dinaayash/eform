@@ -78,8 +78,16 @@
 						<td>{{$hao->nama_pemohon}}</td>
 						<td>{{$hao->nama_atasan}}</td>
 						<td>{{$hao->tbl_layanan_ict->nama_layanan}}</td>
+						@if ($hao->status_permohonan == 'On Progress')
 						<td><small class="label bg-gray" style="font-size:12px">
 						{{$hao->status_permohonan}}</small></td>
+						@elseif ($hao->status_permohonan == 'Sudah Diterima')
+						<td><small class="label bg-green" style="font-size:12px">
+						{{$hao->status_permohonan}}</small></td>
+						@else
+							<td><small class="label bg-red" style="font-size:12px">
+							{{$hao->status_permohonan}}</small></td>
+						@endif
 						<td>{{$hao->done_by}}</td>
 						<td>{{$hao->alasan}}</td>
 						

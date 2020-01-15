@@ -18,25 +18,33 @@ Route::middleware(['cekrole:Admin'])->group(function(){
 	Route::get('/admin-non', 'AdminController@indexNon')->name('admin-non');
 	Route::get('/admin-perb', 'AdminController@indexPerb')->name('admin-perb');
 	Route::get('/admin-org/hapus/{id}','AdminController@deleteAdminOrg');
+	Route::get('/admin-org/approve/{id}', 'AdminController@AppvOrg')->name('admin-org-appv');
+	Route::get('/admin-org/decline/{id}', 'AdminController@DecOrg')->name('admin-org-dec');
+	Route::get('/admin-non/hapus/{id}','AdminController@deleteAdminNon');
+	Route::get('/admin-non/approve/{id}', 'AdminController@AppvNon')->name('admin-non-appv');
+	Route::get('/admin-non/decline/{id}', 'AdminController@DecNon')->name('admin-non-dec');
+	Route::post('/admin-non', 'AdminController@createNon')->name('admin-non-cr');
+	Route::get('/admin-profil','AdminController@profilAdmin')->name('admin-profil');
+	Route::get('/admin-detail', 'AdminController@detailAdmin')->name('admin-detail');
+	Route::post('/admin-profil/update','AdminController@updateAdmin')->name('admin-update');
 });
 
 // Route dengan cekrole:User jadi nanti semua route untuk selain admin (user dsbnya masukknya sini)
 Route::middleware(['cekrole:User'])->group(function(){
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard-ku');
-	// Route::get('/admin', 'AdminController@index')->name('admin-ku');
-});
-
-	// Route::get('/dashboard', 'DashboardController@index')->name('dashboard-ku');
-	
 	Route::get('/profil', 'ProfilController@index');
 	Route::get('/profil-detail', 'ProfilController@indexdet');
-
+	// HAK AKSES ORGANIK
 	Route::get('/organik', 'HAOrganikController@dataMahasiswa')->name('data-mahasiswa-baru');
 	Route::post('/organik', 'HAOrganikController@createOrganik');
 	Route::get('/organik/edit/{id}','HAOrganikController@editOrganik');
 	Route::post('/organik/update','HAOrganikController@updateOrganik');
 	Route::get('/pesan-org', 'HAOrganikController@pesanorganik')->name('pesan-organik');
+	
+});
 
+	// Route::get('/dashboard', 'DashboardController@index')->name('dashboard-ku');
+	
 	Route::get('/non-organik', 'HANonorganikController@dataNonorganik')->name('data-non-organik');
 	Route::post('/non-organik', 'HANonorganikController@createNonOrganik');
 	Route::get('/pesan-non', 'HANonorganikController@pesanNon')->name('data-pesan-lama');
@@ -48,6 +56,8 @@ Route::middleware(['cekrole:User'])->group(function(){
 	Route::get('/perubahan', 'PerubahanController@dataPerubahan')->name('data-perubahan');
 	Route::post('/perubahan', 'PerubahanController@createPerubahan');
 	Route::get('/create-perb', 'MahasiswaController@createperubahan')->name('create-perubahan');
+	Route::get('/perubahan/edit/{id}','PerubahanController@editPerubahan');
+	Route::post('/perubahan/update','PerubahanController@updatePerubahan');
 
 	Route::get('/preventive', 'PreventiveController@dataPreventive')->name('create-prev');
 	Route::post('/preventive', 'PreventiveController@createPreventive');

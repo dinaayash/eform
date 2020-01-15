@@ -68,7 +68,7 @@ class HANonorganikController extends Controller
             $newNOrganik->deskripsi3 = $request->perintah;
         }
         elseif ($request->layanan == 'nonoracle') {
-            $newNOrganik->id_layanan = '4';
+            $newNOrganik->id_layanan = '11';
             
             $newNOrganik->deskripsi1 = $request->idaplikasi2;
         }
@@ -98,23 +98,36 @@ class HANonorganikController extends Controller
     } 
      public function editNonOrganik($id, Request $request)
     { 
-        $user = $request->user();
         $dataAtasan = Authentic::where('status', 'enabled')->orderBy('username')->get();
-        $editnon = DB::table('hak_akses_non')->where('id_hak_akses_NO',$id)->get();
+        $editnon = HakAksesNonOrganik::where('id_hak_akses_NO',$id)->get();
+        return view('non organik.editnon', ['dataAtasan' => $dataAtasan, 'editnon' => $editnon]);
+        // $user = $request->user();
+        // $dataAtasan = Authentic::where('status', 'enabled')->orderBy('username')->get();
+        // $editnon = DB::table('hak_akses_non')->where('id_hak_akses_NO',$id)->get();
 
-        return view('non organik.editnon', ['user' => $user, 'dataAtasan' => $dataAtasan, 'editnon' => $editnon]);
+        // return view('non organik.editnon', ['user' => $user, 'dataAtasan' => $dataAtasan, 'editnon' => $editnon]);
     }
 
-     public function updateOrganik(Request $request)
+     public function updateNonOrganik(Request $request)
     {
-
-    DB::table('hak_akses_non')->where('id_hak_akses_NO',$request->id)->update([
-        'nipg' => $request->nipg,
+        $query = DB::table('hak_akses_non')->where('id_hak_akses_NO', $request->id)->update([
         'nama_pemohon' => $request->pemohon,
         'jabatan_pemohon' => $request->jabatan_p,
+        'satuan_kerja' => $request->sat_kerja,
         'nama_atasan' => $request->nama_atasan,
-        'jabatan_atasan' => $request->jabatan_a
+        'jabatan_atasan' => $request->jabatan_a,
+        'id_layanan' => $request->layanan,
+        'masa_berlaku' => $request->masaberlaku,
+        'alasan' => $request->alasan
     ]);
+
+    // DB::table('hak_akses_non')->where('id_hak_akses_NO',$request->id)->update([
+    //     'nipg' => $request->nipg,
+    //     'nama_pemohon' => $request->pemohon,
+    //     'jabatan_pemohon' => $request->jabatan_p,
+    //     'nama_atasan' => $request->nama_atasan,
+    //     'jabatan_atasan' => $request->jabatan_a
+    // ]);
     // alihkan halaman ke halaman pegawai
     return redirect('/non-organik');
 }

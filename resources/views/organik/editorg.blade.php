@@ -3,7 +3,7 @@
 
 @section('title', 'Organik')
 
-@section('content')	
+@section('content') 
 @section('subtitle', 'Edit Form Hak Akses')
 
 
@@ -16,7 +16,7 @@
                 </div>
                 @foreach($edit as $upd)
                 <form action="/organik/update" method="post" id="myform" onSubmit="return validasi()">
-                	{{ csrf_field() }}
+                    {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $upd->id_hak_akses }}"> <br/>
                 <div class="row">
                     <div class="col-md-6">
@@ -28,21 +28,21 @@
                                 <div class="box-body">
                                 <div class="form-group">
                                   <label>NIPG</label>
-                                  <input type="text" class="form-control" name="nipg" placeholder="" value="{{$upd->nipg}}" required="required">
+                                  <input type="text" class="form-control" name="nipg" placeholder="" value="{{$upd->nipg}}" required="required" readonly>
                                   @if($errors->has('nipg'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
                                 </div>
                                 <div class="form-group">
                                 <label>Nama Pemohon</label>
-                                <input type="text" class="form-control" id="nama_pemohon" name="pemohon" placeholder="" value="{{$upd->nama_pemohon}}" required="required">
+                                <input type="text" class="form-control" id="nama_pemohon" name="pemohon" placeholder="" value="{{$upd->nama_pemohon}}" required="required" readonly>
                                 @if($errors->has('pemohon'))
                                 <small class ="text-danger">harus diisi</small>
                                 @endif
                                 </div>
                                 <div class="form-group">
                                   <label>Jabatan</label>
-                                  <input type="text" class="form-control" name="jabatan_p" placeholder="Staff Profesional Developer" value="{{$upd->jabatan_pemohon}}" required="required">
+                                  <input type="text" class="form-control" name="jabatan_p" placeholder="Staff Profesional Developer" value="{{$upd->jabatan_pemohon}}" required="required" readonly>
                                   @if($errors->has('jabatan_p'))
                                   <small class ="text-danger">harus diisi</small>
                                   @endif
@@ -56,15 +56,15 @@
                                 </div> -->
                                 </div>
                             </div>
-	<div class="box box-default bayangan">
-    	<div class="box-header with-border">
-    	<h3 class="box-title">Atasan Langsung</h3> <img src="/template/dist/img/two.png" width="20px" style="float:right;">
-    	</div>
-    	<div class="panel-body">
-   		<div class="form-group">
-   		<label>Nama Atasan <b style="color:red;">*</b></label><br>
-	    <table width="100%">
-    	<tr>
+    <div class="box box-default bayangan">
+        <div class="box-header with-border">
+        <h3 class="box-title">Atasan Langsung</h3> <img src="/template/dist/img/two.png" width="20px" style="float:right;">
+        </div>
+        <div class="panel-body">
+        <div class="form-group">
+        <label>Nama Atasan <b style="color:red;">*</b></label><br>
+        <table width="100%">
+        <tr>
             <td width="100%">
             <input name="nama_atasan" id="nama_atasan" value="{{$upd->nama_atasan}}" type="text" class="form-control" placeholder="Nama Atasan" required="required">
             @if($errors->has('nama_atasan'))
@@ -73,15 +73,15 @@
             </td>
        <td><button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal" style="background-color:#4B515D; color:white"><i class="fa fa-search"></i>&nbsp; Cari</button>
        </td>
- 		 </tr>
+         </tr>
         </table>
         </div>
         <!-- <div class="form-group">
-        	<input name="emailatasan" id="emailatasan" value="" type="text" class="form-control" placeholder="Email Atasan" readonly style="display:none;">
+            <input name="emailatasan" id="emailatasan" value="" type="text" class="form-control" placeholder="Email Atasan" readonly style="display:none;">
         </div> -->
         <div class="form-group">
         <label>Jabatan</label>
-        	<input name="jabatan_a" id="jabatan_a" placeholder="Jabatan" value="{{$upd->jabatan_atasan}}" type="text" class="form-control" required="required">
+            <input name="jabatan_a" id="jabatan_a" placeholder="Jabatan" value="{{$upd->jabatan_atasan}}" type="text" class="form-control" required="required">
             @if($errors->has('jabatan_a'))
             <small class ="text-danger">harus diisi</small>
             @endif
@@ -97,12 +97,12 @@
         <div class="box-body">
         <div class="box box-default bayangan">
         <div class="box-header with-border">
-        	<h3 class="box-title">Layanan ICT Yang Dibutuhkan</h3> <img src="/template/dist/img/three.png" width="20px" style="float:right;">
+            <h3 class="box-title">Layanan ICT Yang Dibutuhkan</h3> <img src="/template/dist/img/three.png" width="20px" style="float:right;">
         </div>
         <div class="panel-body">
         <div class="form-group">
         <label class="radio-inline">
-    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="vpn" value="vpn" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'VPN' ? 'checked' : '' }} >VPN
+    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="vpn" value="vpn" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'VPN' ? 'checked' : '' }}>VPN
         </label>
         </div>
         <hr>
@@ -115,18 +115,18 @@
         <hr>
         <div class="form-group">
         <label class="radio-inline">
-    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="mailgroup" value="email" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'email' ? 'checked' : '' }}>Email Group
+    &nbsp;&nbsp;<input name="layanan" id="layanan" type="radio" class="mailgroup" value="email" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'Mail Group' ? 'checked' : '' }}>Email Group
         </label>
     &nbsp;&nbsp;<select name="emailgroup" id="emailgroup" class="form-control emailgroup" placeholder="Nama Email Group" style="margin-top:10px; display:none">
         <option>Distribution</option>
         <option>Security</option>
         </select>
         <textarea name="member" id="group" rows="4" class="form-control group" placeholder="Member/Name Group" style="margin-top:10px; display:none;"></textarea>
-      	</div>
-		<hr>
+        </div>
+        <hr>
         <table class="table table-bordered">
         <thead>
-        	<tr>
+            <tr>
             <td style="background-color:#428bca; color:white;">&nbsp;&nbsp;Account</td>
             </tr>
         </thead>
@@ -134,30 +134,30 @@
             <tr>
                 <td>
                     <div class="panel-body">
-                    	<label class="radio-inline">
-                        <input name="layanan" id="layanan" type="radio" class="newaccount" value="newaccount" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'newaccount' ? 'checked' : '' }}>New Account Organik
+                        <label class="radio-inline">
+                        <input name="layanan" id="layanan" type="radio" class="newaccount" value="newaccount" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'New Account (O)' ? 'checked' : '' }}>New Account Organik
                         </label>
-     					<input name="keteranganuserbaru" type="text" id="namaaccount" class="form-control namaaccount" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
+                        <input name="keteranganuserbaru" type="text" id="namaaccount" class="form-control namaaccount" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
                         <input name="namajabatan" type="text" id="namajabatan" class="form-control namajabatan" placeholder="Jabatan" style="margin-top:10px; display:none; text-transform: capitalize;">
     <br>                                                                                        
-    					<label class="radio-inline"  style="margin-top:10px;">
-    	 				<input name="layanan" id="layanan" type="radio" class="newaccountno" value="newaccountno" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'newaccountno' ? 'checked' : '' }} >New Account Non Organik
+                        <label class="radio-inline"  style="margin-top:10px;">
+                        <input name="layanan" id="layanan" type="radio" class="newaccountno" value="newaccountno" onchange="cekLayanan($(this).val())"  {{ $upd->tbl_layanan_ict->nama_layanan == 'New Account (NO)' ? 'checked' : '' }}>New Account Non Organik
                         </label>
                         <input name="keteranganuserbaru2" type="text" id="namaaccount2" class="form-control namaaccount2" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
                         <input name="namajabatan2" type="text" id="namajabatan2" class="form-control namajabatan2" placeholder="Jabatan" style="margin-top:10px; display:none; text-transform: capitalize;">
-        <div class="input-group date tanggal" style="margin-top:10px; display:none">
-            <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-            </div>
-                <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker" placeholder="Masa Berlaku">
-        </div>
+                        <div class="input-group date tanggal" style="margin-top:10px; display:none">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                               <input name="masaberlaku" type="text" class="form-control datepicker" id="datepicker" placeholder="Masa Berlaku">
+                        </div>
     <br>
         <label class="radio-inline"  style="margin-top:10px;">
-        		<input name="layanan" id="layanan" type="radio" class="perpanjang" value="perpanjang" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'perpanjang' ? 'checked' : '' }} >Extend Account Non Organik
+                <input name="layanan" id="layanan" type="radio" class="perpanjang" value="perpanjang" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'Extend Account (NO)' ? 'checked' : '' }}>Extend Account Non Organik
         </label>
-        		<input name="namaperpanjang" type="text" id="namaperpanjang" class="form-control namaperpanjang" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
-        		<input name="jabatanperpanjang" type="text" id="jabatanperpanjang" class="form-control jabatanperpanjang" placeholder="Jabatan" style="margin-top:10px; display:none; text-transform: capitalize;">
-       	<div class="input-group date tanggal2" style="margin-top:10px; display:none">
+                <input name="namaperpanjang" type="text" id="namaperpanjang" class="form-control namaperpanjang" placeholder="Nama Lengkap" style="margin-top:10px; display:none; text-transform: capitalize;">
+                <input name="jabatanperpanjang" type="text" id="jabatanperpanjang" class="form-control jabatanperpanjang" placeholder="Jabatan" style="margin-top:10px; display:none; text-transform: capitalize;">
+        <div class="input-group date tanggal2" style="margin-top:10px; display:none">
            <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
            </div>
@@ -177,10 +177,10 @@
             <tr>
         <td>
          <div class="panel-body">
-         	<label class="radio-inline">
-                <input name="layanan" id="layanan" type="radio" class="oracle" value="oracle" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'oracle' ? 'checked' : '' }}>Oracle
+            <label class="radio-inline">
+                <input name="layanan" id="layanan" type="radio" class="oracle" value="oracle" onchange="cekLayanan($(this).val())">Oracle
             </label>
-            	<select name="idaplikasi" type="text" id="namaaplikasi" class="form-control namaaplikasi pilih4" value="" placeholder="Nama Aplikasi" style="margin-top:10px; display:none">
+                <select name="idaplikasi" type="text" id="namaaplikasi" class="form-control namaaplikasi pilih4" value="" placeholder="Nama Aplikasi" style="margin-top:10px; display:none">
         <option value="CRM Siebel">CRM Siebel</option>
         <option value="Eprocurement ">Eprocurement </option>
         <option value="Hyperion">Hyperion</option>
@@ -199,26 +199,26 @@
         </select>
         <input name="responsibiliti" type="text" id="respon" class="form-control respon" placeholder="Responsibility" style="margin-top:10px; display:none">
         <select name="perintah" type="text" id="perintah" class="form-control perintah" value="" placeholder="" style="margin-top:10px; display:none">
-        	<option>Tambah</option>
+            <option>Tambah</option>
             <option>Hapus</option>
         </select>
         <br>
         <label class="radio-inline" style="margin-top:10px;">
-        	<input name="layanan" type="radio" class="nonoracle" value="nonoracle" onchange="cekLayanan($(this).val())" {{ $upd->tbl_layanan_ict->nama_layanan == 'nonoracle' ? 'checked' : '' }}>Non Oracle
+            <input name="layanan" type="radio" class="nonoracle" value="nonoracle" onchange="cekLayanan($(this).val())">Non Oracle
         </label>
         <select name="idaplikasi2" type="text" id="namaaplikasi2" class="form-control namaaplikasi2" value="" placeholder="Nama Aplikasi" style="margin-top:10px; display:none">
-        	<option value="GASPEX">GASPEX</option>
-        	<option value="Business Intelligence App">Business Intelligence App</option>
-        	<option value="E-Auction">E-Auction</option>
-        	<option value="Popay">Popay</option>
-        	<option value="Enterprise Asset Management">Enterprise Asset Management</option>
-        	<option value="AMI / Payment Engine">AMI / Payment Engine</option>
-        	<option value="Simari">Simari</option>
-        	<option value="On SPEED">On SPEED</option>
-        	<option value="E-SMS">E-SMS</option>
+            <option value="GASPEX">GASPEX</option>
+            <option value="Business Intelligence App">Business Intelligence App</option>
+            <option value="E-Auction">E-Auction</option>
+            <option value="Popay">Popay</option>
+            <option value="Enterprise Asset Management">Enterprise Asset Management</option>
+            <option value="AMI / Payment Engine">AMI / Payment Engine</option>
+            <option value="Simari">Simari</option>
+            <option value="On SPEED">On SPEED</option>
+            <option value="E-SMS">E-SMS</option>
         </select>
-    	</div>
-    	</td>
+        </div>
+        </td>
         </tr>
         </tbody>
         </table>
@@ -228,16 +228,17 @@
         </div>
         </div>
         </div>
-        <button name="simpan" type="submit" class="btn btn-primary" style="margin-bottom:10px; width:100px">Submit Form</button>
+        <button name="simpan" type="submit" class="btn btn-primary" style="margin-bottom:10px; width:100px">Update Form</button>
         </div>
         </div>
-      	</div>
+        </div>
         </form>
         @endforeach
         </div>
         </div>
         </div>
     </section>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -281,6 +282,7 @@
 
 
 @section('js')
+
     <script>
         
         $(document).ready( function () {
@@ -296,11 +298,16 @@
 
          $(function(){
         $(".datepicker").datepicker({
-        format: 'yyyy-mm-dd',
+        dateFormat: 'yyyy-mm-dd',
         autoclose: true,
-        todayHighlight: true,
+        todayHighlight: true
         });
-    });
+        $('#datepicker2').datepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        todayHighlight: true
+        });
+});
 
     function cekLayanan(value) {
         if(value == "vpn"){

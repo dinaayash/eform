@@ -86,8 +86,18 @@
 						<td><b>{{$hano->tbl_layanan_ict ? $hano->tbl_layanan_ict->nama_layanan : 'kosong' }}</b>
 							<br><small>Masa Berlaku
 							<br>{{$hano->masa_berlaku}}</small></td>
+
+						@if ($hano->status_permohonan == 'On Progress')
 						<td><small class="label bg-gray" style="font-size:12px">
 							{{$hano->status_permohonan}}</small></td>
+							@elseif ($hano->status_permohonan == 'Sudah Diterima')
+						<td><small class="label bg-green" style="font-size:12px">
+						{{$hano->status_permohonan}}</small></td>
+						@else
+							<td><small class="label bg-red" style="font-size:12px">
+							{{$hano->status_permohonan}}</small></td>
+						@endif
+							
 						<td>{{$hano->done_by}}</td>
 						<td>{{$hano->alasan}}</td>
 						

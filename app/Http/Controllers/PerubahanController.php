@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\TipePerubahan;
+use App\Models\Authentic;
 use App\Models\Perubahan;
 use Exception;
+use Auth;
 
 class PerubahanController extends Controller
 {
     public function dataPerubahan()
-    {
+      {
         $Perubahan = Perubahan::all();
         return view('mahasiswa.perubahan', ['Perubahan' => $Perubahan]);
-    }
+      }
     public function createPerubahan(Request $request)
-    {
+      {
         // return view('mahasiswa.create-perubahan');
         $newPerubahan = new Perubahan;
         $newPerubahan->no_perubahan = 'FP/'.random_int(1, 9999).'XII/'.Date('Y');
@@ -32,7 +35,7 @@ class PerubahanController extends Controller
         $newPerubahan->lingkungan = $request->lingkungan;
         $newPerubahan->desc_plantest = $request->deskripsitest;
         $newPerubahan->desc_rollback = $request->deskripsirollback;
-        $newPerubahan->status_permohonan = 'On Progress';
+        // $newPerubahan->status_permohonan = 'On Progress';
        
        $newPerubahan->tipe_perubahan = json_encode($request->tipe_perubahan, JSON_PRETTY_PRINT);
         // ($request->tipe_perubahan);
@@ -65,35 +68,11 @@ class PerubahanController extends Controller
 			// $newPerubahan->id_tipe  = '7';
    //          $newPerubahan->deskripsi1 = 'Security');
    //      }
+          $newPerubahan->prioritas_perubahan = $request->optprioritas;
+          $newPerubahan->dampak_perubahan = $request->optdampak;
 
-         if ($request->optprioritas == 'Penting') {
-            $newPerubahan->id_tipe = '1';
-            $newPerubahan->prioritas_perubahan = 'Penting';
-        }
-         elseif ($request->optprioritas == 'Tinggi') {
-            $newPerubahan->id_tipe = '2';
-            $newPerubahan->prioritas_perubahan = 'Tinggi';
-        }
-         elseif ($request->optprioritas == 'Menengah') {
-            $newPerubahan->id_tipe = '3';
-            $newPerubahan->prioritas_perubahan = 'Menengah';
-        }
-         elseif ($request->optprioritas == 'Rendah') {
-            $newPerubahan->id_tipe = '4';
-            $newPerubahan->prioritas_perubahan = 'Rendah';
-        }
-         if ($request->optdampak == 'Kecil') {
-            $newPerubahan->id_tipe = '5';
-            $newPerubahan->dampak_perubahan = 'Kecil';
-        }
-         elseif ($request->optdampak == 'Menengah') {
-            $newPerubahan->id_tipe = '6';
-            $newPerubahan->dampak_perubahan = 'Menengah';
-        }
-         elseif ($request->optdampak == 'Besar') {
-            $newPerubahan->id_tipe = '7';
-            $newPerubahan->dampak_perubahan = 'Besar';
-        }
+
+         
         // $newDetailNOrganik->save();
         $newPerubahan->save();
 
@@ -108,5 +87,36 @@ class PerubahanController extends Controller
         // }  
 
         return redirect('/perubahan')->with('alert-success','Data berhasil diTAMBAH!');
-    }   
+      }   
+     public function editPerubahan($id, Request $request)
+      { 
+        $dataAtasan = Authentic::where('status', 'enabled')->orderBy('username')->get();
+        $editperb = Perubahan::where('id_perubahan',$id)->get();
+        return view('mahasiswa.editperb', ['dataAtasan' => $dataAtasan, 'editperb' => $editperb]);
+       
+      }
+
+     public function updatePerubahan(Request $request)
+      {
+        $query = Perubahan::where('id_perubahan', $request->id)->first();
+        $query->nama_pemohon = $request->namapemohon;
+        $query->jabatan_pemohon = $request->jabatanpemohon;
+        $query->satuan_kerja = $request->divisipemohon;
+        $query->nama_atasan = $request->nipgatasan;
+        $query->jabatan_atasan = $request->jabatanatasan;
+        $query->tipe_perubahan = json_encode($request->tipe_perubahan, JSON_PRETTY_PRINT);
+        $query->nama_proyek = $request->namaproyek;
+        $query->desc_perubahan = $request->deskripsi;
+        $query->masa_perubahan = $request->tanggal;
+        $query->alasan_perubahan = $request->alasan;
+        $query->lingkungan = $request->lingkungan;
+        $query->desc_plantest = $request->deskripsitest;
+        $query->desc_rollback = $request->deskripsirollback;
+        $query->prioritas_perubahan = $request->optprioritas;
+        $query->dampak_perubahan = $request->optdampak;
+        if(!$query->save()){
+          return back()->withErrors(['errrrrrrrr']);
+      }
+        return redirect('/perubahan');
+   } 
 }
